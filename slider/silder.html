@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css" media="screen">	
+			*{
+				box-sizing: border-box;
+			}
+			#container{
+				position: relative;
+				width:300px;
+				height:600px;
+				margin: auto;
+				overflow: hidden;
+			}
+			img{
+				margin:0px;
+				padding:0px;
+				width:300px;
+				height: 500px;
+			}
+			#first{
+				position: absolute;
+				top: 0;
+				left:-50%;
+				
+				z-index: 1;	
+			}
+			#third,#fourth{
+				position: absolute;
+				top:0;
+				opacity: 0
+			}
+			#fourth{
+				right:50%;
+			}
+			#third{
+				left:50%;
+			}
+			#second{
+				position: absolute;
+				top:0;	
+				right:-50%;
+				z-index: 1;
+			}		
+	</style>
+	<title></title>
+</head>
+<body>
+	<div id="container">
+		<img id="first" src="output-onlinepngtools (1).png" >
+		<img id="second" src="output-onlinepngtools (2).png" >
+		<img id="third" src="final2.png" >
+		<img id="fourth" src="final.png" >
+		
+	</div>
+
+</body>
+<script >
+	window.addEventListener('mousemove',function mousepointer(event){
+		var img = document.getElementById('second');
+		var img2 = document.getElementById('first');
+		var img3 = document.getElementById('third');
+		var img4 = document.getElementById('fourth');
+		var x = event.x;
+		var refernce = window.innerWidth;
+		console.log(x);
+		var half = Math.round(refernce/2);
+		var z = x-half;
+		 if(x < half){
+			var cal = Math.round(((100*z)/half)-50);
+		 	img2.style.left = cal+"%";
+		 	console.log(cal);	
+		 		img.style.left = "50%";	
+		 	img4.style.opacity="1";
+		 		img3.style.opacity="0";
+		 	
+			
+		}
+		  else if(x > half){
+		 	var cal2 = Math.round((100*x)/refernce);
+		  	img.style.left = cal2+"%";	
+		  	img3.style.opacity="1";
+		  	img4.style.opacity="0";
+		  	img2.style.left = "-50%";
+		  }
+
+	});
+	
+</script>
+</html>
